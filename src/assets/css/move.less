@@ -1,0 +1,69 @@
+/* 视角右移 */
+.move-right-leave-active {
+    animation          : move-right-out 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-right-out {
+    from {
+        opacity  : 1;
+        transform: scale(1) translate(0);
+    }
+
+    to {
+        opacity  : 0;
+        transform: scale(0.7) translate(-100vw, 0);
+    }
+}
+
+.move-right-enter-active {
+    animation          : move-right-in 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-right-in {
+    from {
+        opacity  : 0;
+        transform: scale(0.7) translate(100vw, 0);
+    }
+
+    to {
+        opacity  : 1;
+        transform: scale(1) translate(0);
+    }
+}
+
+/* 视角左移 */
+.move-left-leave-active {
+    animation          : move-left-out 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-left-out {
+    from {
+        opacity  : 1;
+        transform: scale(1) translate(0);
+    }
+
+    to {
+        opacity  : 0;
+        transform: scale(0.7) translate(100vw, 0);
+    }
+}
+
+.move-left-enter-active {
+    animation          : move-left-in 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-left-in {
+    from {
+        opacity  : 0;
+        transform: scale(0.7) translate(-100vw, 0);
+    }
+
+    to {
+        opacity  : 1;
+        transform: scale(1) translate(0);
+    }
+}

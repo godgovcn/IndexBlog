@@ -1,0 +1,100 @@
+.menu {
+    position       : fixed;
+    top            : 20px;
+    left           : 20px;
+    right          : 20px;
+    display        : flex;
+    z-index        : 10;
+    justify-content: space-between;
+
+    .mdi {
+        font-size   : 24px !important;
+        margin-right: 10px;
+    }
+
+    .group {
+        display    : flex;
+        align-items: center;
+
+        .item {
+            font-size : 0.925rem;
+            color     : #696969;
+            cursor    : pointer;
+            margin    : 0 5px;
+            transition: all 0.3s;
+
+            &:hover {
+                color: #272727;
+            }
+
+            &:active {
+                color: black;
+            }
+        }
+
+        .search-box {
+            width             : 0;
+            box-sizing        : border-box;
+            border            : none;
+            -webkit-appearance: none;
+            line-height       : 1.5;
+            box-shadow        : inset rgba(255, 255, 255, 0.7) 0 -1px 0 0;
+            padding           : 0 0 2px;
+            outline           : none;
+            font-size         : 0.9rem;
+            background-color  : transparent;
+            color             : white;
+            transition        : all 0.5s;
+
+            &:focus {
+                width       : 150px;
+                margin-right: 10px;
+            }
+
+            &::placeholder {
+                color: #dadada;
+            }
+        }
+
+        .hidden {
+            opacity   : 0;
+            transform : scale(1, 0);
+            transition: all 0.3s;
+        }
+
+        .show {
+            opacity  : 1;
+            transform: scale(1);
+        }
+
+        .rotate {
+            transform: rotate(90deg);
+        }
+    }
+
+    .drop-down {
+        top           : 75px;
+        left          : 21px;
+        position      : fixed;
+        display       : flex;
+        flex-direction: column;
+        opacity       : 0;
+        transition    : translate(-30px);
+        transition    : all 0.3s;
+
+        .item {
+            margin-bottom: 10px;
+            color        : #696969;
+        }
+    }
+}
+
+.menu-enter-active,
+.menu-leave-active {
+    transition: opacity .5s;
+}
+
+.menu-enter,
+.menu-leave-to {
+    opacity: 0;
+}

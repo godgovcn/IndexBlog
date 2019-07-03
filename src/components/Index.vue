@@ -1,18 +1,17 @@
 <template lang="pug">
-  main
-    Headers
-    Footers
+  #index.screen.index
+    div(style="margin:40vh auto;text-align:center;")
+      h1(style="font-size:2.3rem") {{config.title}}
+      span(style="color:#696969;font-size:0.9rem") {{config.subTitle}}
+      h3
+      br
+      router-link.btn(to="/archive") Explore Me
 </template>
 
 <script>
-import Headers from "./Headers";
-import Footers from "./Footers";
 export default {
   name: "Index",
-  components: {
-    Headers: Headers,
-    Footers: Footers
-  }
+  props:['config']
 };
 </script>
 
