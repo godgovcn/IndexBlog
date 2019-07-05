@@ -16,37 +16,36 @@ export default {
   data() {
     return {
       style: {
-        opacity: 1
+        opacity: 1,
+        transform: 'rotate(0deg)'
       },
       to: "/"
     };
   },
   created: function() {
-    this.state(this.$route.name, this.$route.name);
+    this.state(this.$route.name);
   },
   watch: {
     $route(to, from) {
-      this.state(to.name, from.name);
+      this.state(to.name);
     }
   },
   methods: {
-    state: function(to, from) {
-      if (from == "Archive") {
-        this.style.opacity = 1;
-        if (this.inside.infoStyle.left > 0) {
-          this.inside.infoStyle.left = 0;
-          this.to = "/archive";
-          return;
-        }
-      }
-      if (to == "Index") {
+    state: function(now) {
+      if (now == "Index") {
         this.style.opacity = 0;
         this.to = "/";
         return;
       }
-      if (to == "Archive") {
+      if (now == "Archive") {
         this.style.opacity = 1;
+        this.style.transform = 'rotate(0deg)';
         this.to = "/";
+        return;
+      }
+      if (now == "Page") {
+        this.style.transform = 'rotate(90deg)';
+        this.to = "/Archive";
         return;
       }
     }

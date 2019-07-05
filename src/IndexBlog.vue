@@ -132,6 +132,12 @@ export default {
         if (to.name == "Index") {
           this.inside.move = "move-left";
         }
+        if (to.name == "Page") {
+          this.inside.move = "move-down";
+        }
+      }
+      if (from.name == "Page") {
+        this.inside.move = "move-up";
       }
     }
   }

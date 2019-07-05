@@ -23,10 +23,11 @@
             a(href="https://godgov.cn/") FireUnicornser
       .article-list(v-if="lists")
         .article.right-in-animation(v-for="v in lists",:style="v.style")
-          .title {{v.title}}
+          .title
+            router-link(:to="'/page/'+v.id") {{v.title}}
             .meta
               a.category(v-for="e in v.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
-          .content 
+          .content(v-on:click="gopage(v.id)")
             p(style='white-space: pre-line') {{v.content}}
 </template>
 
@@ -47,8 +48,13 @@ export default {
       .addEventListener("scroll", this.handleScroll, true);
   },
   methods: {
+    //监听滚动控制透明度
     handleScroll: function() {
       this.inside.infoStyle.left = document.getElementById("bar").scrollLeft;
+    },
+    //文章列表文字点击事件
+    gopage: function(id) {
+      this.$router.push({ path: "/page/" + id });
     }
   },
   computed: {
