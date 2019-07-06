@@ -22,17 +22,28 @@
             |
             a(href="https://godgov.cn/") FireUnicornser
       .article-list(v-if="lists")
-        .article.right-in-animation(v-for="v in lists",:style="v.style")
+        .article.right-in-animation(v-for="v in lists",:style="v.style",v-if="!v.img")
           .title
             router-link(:to="'/page/'+v.id") {{v.title}}
             .meta
               a.category(v-for="e in v.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
-          .content(v-on:click="goPage(v.id)")
+              | {{v.author}}
+          .content(@click="goPage(v.id)")
             p(style='white-space: pre-line') {{v.content}}
+        .article-with-preview.right-in-animation(v-else)
+          .cover(@click="goPage(v.id)")
+            .cover-image(:style="{backgroundImage:'url('+v.img+')'}")
+              .title {{v.title}}
+          .content(@click="goPage(v.id)")
+            .text {{v.content}}
+          .meta
+            .group
+              a.category(v-for="e in v.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
+            .group.date {{v.author}}
 </template>
 
 <script>
-import {TweenLite} from "gsap"
+import { TweenLite } from "gsap";
 export default {
   name: "Archive",
   data() {
@@ -64,7 +75,7 @@ export default {
     pageWheel: function(e) {
       if (e.deltaX == -0) {
         //-0和0到底是个啥玩意？？？真他吗神奇的js
-        document.getElementById("bar").scrollBy(e.deltaY,0);
+        document.getElementById("bar").scrollBy(e.deltaY, 0);
       }
     }
   },

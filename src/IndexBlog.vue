@@ -32,13 +32,7 @@ renderer.code = function(code, language) {
 marked.setOptions({
   renderer: renderer
 });
-//返回标签
-//提取摘要
-function content(e) {
-  var div = document.createElement("div");
-  div.innerHTML = e;
-  return div.innerText;
-}
+
 export default {
   name: "IndexBlog",
   data: function() {
@@ -92,11 +86,13 @@ export default {
         var comments = 0;
         rawdata.forEach(function(val, i) {
           data.push({
+            img: false,
             title: val.title,
             id: val.number,
             labels: [],
             body: marked(val.body),
-            content: content(marked(val.body))
+            content: that.content(marked(val.body)),
+            author: val.user.login
           });
           //追加评论数量
           comments += val.comments;
@@ -107,6 +103,13 @@ export default {
               color: e.color
             });
           });
+          //判断图片
+          var div = document.createElement("div");
+          div.innerHTML = data[i].body;
+          var img = div.querySelector("img");
+          if (img) {
+            data[i].img = img.src;
+          }
         });
         that.lists = data;
         TweenLite.to(that.info, 1, {
@@ -135,6 +138,13 @@ export default {
           roundProps: ["categoryCount"]
         });
       });
+  },
+  methods: {
+    content: function(e) {
+      var div = document.createElement("div");
+      div.innerHTML = e;
+      return div.innerText;
+    }
   },
   watch: {
     $route(to, from) {
