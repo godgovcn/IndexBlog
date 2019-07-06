@@ -1,21 +1,24 @@
-# indexblog
+# IndexBlog
 
-> A Vue.js project
+> 这货实际上还真是个BLOG
 
-## Build Setup
+## 这货能吃么？
 
-``` bash
-# install dependencies
-npm install
+当然不能吃
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 这货不能吃还能干啥？
 
-# build for production with minification
-npm run build
+就是一个博客系统啊->[立即围观](https://goagov.cn)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+## 这货啥咋整的？
+
+现成的github page->[部署地址](https://github.com/FireUnicornser/govBlog), 与现成的 github api （issues）终极交易出来的白嫖博客系统
+
+## 给我也整一个！
+
+自己看代码，稍微改改src/config.js然后yarn build就好啦！
+
+啥？yarn不会用？请前往->[这里](https://baidu.com)
+
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
