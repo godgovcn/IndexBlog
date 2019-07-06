@@ -38,7 +38,7 @@ export default {
   data: function() {
     var datas = {
       lists: false, //文章列表
-      bg: "https://i.loli.net/2019/07/07/5d20d89445b1516976.png", //背景地址
+      bg: "https://i.loli.net/2018/04/15/5ad2ca39da9bb.jpg", //背景地址
       info: {
         articleCount: 0,
         categoryCount: 0,
