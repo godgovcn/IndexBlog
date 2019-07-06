@@ -1,4 +1,5 @@
 /* 视角右移 */
+
 .move-right-leave-active {
     animation          : move-right-out 0.8s ease-in-out;
     animation-fill-mode: forwards;
@@ -135,5 +136,39 @@
     to {
         opacity  : 1;
         transform: scale(1) translate(0);
+    }
+}
+
+/*滚动条*/
+.move-right-enter-to {
+    #bar {
+        overflow: hidden;
+    }
+}
+
+.move-left-leave-to {
+    #bar {
+        overflow: hidden;
+    }
+}
+
+.move-up-leave-to {
+    overflow-y: hidden;
+}
+
+.move-up-enter-to {
+    #bar {
+        overflow: hidden;
+    }
+
+}
+
+.move-down-enter-to {
+    overflow-y: hidden;
+}
+
+.move-down-leave-to {
+    #bar {
+        overflow: hidden;
     }
 }

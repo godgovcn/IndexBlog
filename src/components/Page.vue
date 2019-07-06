@@ -1,5 +1,5 @@
 <template lang="pug">
-  #page.screen.page(style="overflow-y: scroll;")
+  #page.screen.page
     .page-container(v-if="blog")
       .page-wrapper
         .title {{blog.title}}
