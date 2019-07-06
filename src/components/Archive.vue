@@ -27,11 +27,12 @@
             router-link(:to="'/page/'+v.id") {{v.title}}
             .meta
               a.category(v-for="e in v.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
-          .content(v-on:click="gopage(v.id)")
+          .content(v-on:click="goPage(v.id)")
             p(style='white-space: pre-line') {{v.content}}
 </template>
 
 <script>
+import {TweenLite} from "gsap"
 export default {
   name: "Archive",
   data() {
@@ -46,15 +47,25 @@ export default {
     document
       .getElementById("archive")
       .addEventListener("scroll", this.handleScroll, true);
+    document
+      .getElementById("archive")
+      .addEventListener("wheel", this.pageWheel, true);
   },
   methods: {
-    //监听滚动控制透明度
-    handleScroll: function() {
+    //监听滚动控制透明度和滚动状态
+    handleScroll: function(e) {
       this.inside.infoStyle.left = document.getElementById("bar").scrollLeft;
     },
     //文章列表文字点击事件
-    gopage: function(id) {
+    goPage: function(id) {
       this.$router.push({ path: "/page/" + id });
+    },
+    //监听鼠标滚轮滚动
+    pageWheel: function(e) {
+      if (e.deltaX == -0) {
+        //-0和0到底是个啥玩意？？？真他吗神奇的js
+        document.getElementById("bar").scrollBy(e.deltaY,0);
+      }
     }
   },
   computed: {

@@ -16,6 +16,8 @@ import Config from "@/config.js";
 
 import "@/assets/css/Candy-Rebirth.less";
 import "@/assets/css/materialdesignicons.min.css";
+
+import { TweenLite } from "gsap";
 //配置markdown
 let renderer = new marked.Renderer();
 renderer.code = function(code, language) {
@@ -53,7 +55,7 @@ export default {
         move: "",
         infoStyle: {
           opacity: 0,
-          left:0,
+          left: 0
         }
       }
     };
@@ -87,6 +89,7 @@ export default {
       })
       .then(function(rawdata) {
         var data = [];
+        var comments = 0;
         rawdata.forEach(function(val, i) {
           data.push({
             title: val.title,
@@ -96,7 +99,7 @@ export default {
             content: content(marked(val.body))
           });
           //追加评论数量
-          that.info.commentCount += val.comments;
+          comments += val.comments;
           //添加标签
           val.labels.forEach(e => {
             data[i].labels.push({
@@ -106,7 +109,14 @@ export default {
           });
         });
         that.lists = data;
-        that.info.articleCount = rawdata.length;
+        TweenLite.to(that.info, 1, {
+          articleCount: rawdata.length,
+          roundProps: ["articleCount"]
+        });
+        TweenLite.to(that.info, 1, {
+          commentCount: comments,
+          roundProps: ["commentCount"]
+        });
       });
     //获取分类数量
     fetch(
@@ -120,7 +130,10 @@ export default {
         return res.json();
       })
       .then(function(rawdata) {
-        that.info.categoryCount = rawdata.length;
+        TweenLite.to(that.info, 1, {
+          categoryCount: rawdata.length,
+          roundProps: ["categoryCount"]
+        });
       });
   },
   watch: {
