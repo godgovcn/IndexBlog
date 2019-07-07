@@ -2,7 +2,12 @@
   #page.screen.page
     .page-container(v-if="blog")
       .page-wrapper
-        .title {{blog.title}}
+        .cover(v-if="blog.img")
+          .cover-image(:style="{backgroundImage:'url('+blog.img+')'}")
+            .title {{blog.title}}
+              .meta
+                a.category(v-for="e in blog.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
+        .title(v-else) {{blog.title}}
           .meta
             a.category(v-for="e in blog.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
         .content(v-html="blog.body")

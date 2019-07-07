@@ -109,6 +109,11 @@ export default {
           var img = div.querySelector("img");
           if (img) {
             data[i].img = img.src;
+            //判断图片是否需要隐藏
+            if (img.alt == "hide") {
+              div.querySelector("img").parentNode.removeChild(img)
+              data[i].body = div.innerHTML;
+            }
           }
         });
         that.lists = data;
