@@ -1,7 +1,7 @@
 <template lang="pug">
   #IndexBlog
     .bg(:style="{backgroundImage:'url('+bg+')'}")
-    Menu(:inside="inside")
+    Menu(:inside="inside",:config="config")
     transition(:name="inside.move")
       router-view(:lists="lists", :info="info", :config="config", :inside="inside")
 </template>
@@ -111,7 +111,7 @@ export default {
             data[i].img = img.src;
             //判断图片是否需要隐藏
             if (img.alt == "hide") {
-              div.querySelector("img").parentNode.removeChild(img)
+              div.querySelector("img").parentNode.removeChild(img);
               data[i].body = div.innerHTML;
             }
           }
@@ -155,18 +155,18 @@ export default {
     $route(to, from) {
       if (from.name == "Index") {
         this.inside.move = "move-right";
+        return;
       }
       if (from.name == "Archive") {
         if (to.name == "Index") {
           this.inside.move = "move-left";
+          return;
         }
-        if (to.name == "Page") {
-          this.inside.move = "move-down";
-        }
+        this.inside.move = "move-down";
+        return;
       }
-      if (from.name == "Page") {
-        this.inside.move = "move-up";
-      }
+      this.inside.move = "move-up";
+      return;
     }
   }
 };

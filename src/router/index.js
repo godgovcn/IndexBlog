@@ -5,7 +5,6 @@ import Archive from '@/components/Archive'
 import Page from '@/components/Page'
 import Config from '@/config.js'
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -22,6 +21,6 @@ export default new Router({
       path: '/page/:id',
       name: 'Page',
       component: Page
-    }
-  ]
+    },
+  ].concat(Config.separatePage())
 })

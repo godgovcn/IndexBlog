@@ -46,7 +46,7 @@ export default {
         "/" +
         that.config.reop +
         "/issues/" +
-        that.$route.params.id +
+        that.id +
         "/comments"
     )
       .then(function(res) {
@@ -64,7 +64,7 @@ export default {
       });
       that.comments = list;
   },
-  props: ["config"]
+  props: ["config","id"]
 };
 </script>
 <style>

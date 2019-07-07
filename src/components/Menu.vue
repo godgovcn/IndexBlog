@@ -1,14 +1,14 @@
 <template lang="pug">
   div.menu
     div.group
-      router-link#back.item.mdi.mdi-arrow-left(v-bind:to="to",:style='style') 
+      router-link#back.item.mdi.mdi-arrow-left(:to="to",:style='style') 
       div.drop-down
         span.item.mdi.mdi-format-annotation-plus
         span.item.mdi.mdi-share-variant
     div.group
-      div.hidden
-      a.item 关于
-      a.item.mdi.mdi-menu
+      div.hidden(:class="toggle ? 'show' : '' ")
+        router-link.item(v-for="(v,i) in separates",:key="i",:to="v.path") {{v.title}}
+      a.item.mdi.mdi-menu(:class="toggle ? 'rotate' : '' ",@click=" toggle = !toggle")
 </template>
 <script>
 export default {
@@ -17,9 +17,11 @@ export default {
     return {
       style: {
         opacity: 1,
-        transform: 'rotate(0deg)'
+        transform: "rotate(0deg)"
       },
-      to: "/"
+      separates: this.config.separates,
+      to: "/",
+      toggle: false
     };
   },
   created: function() {
@@ -31,6 +33,9 @@ export default {
     }
   },
   methods: {
+    cl: function(separate) {
+      this.separate = separate;
+    },
     state: function(now) {
       if (now == "Index") {
         this.style.opacity = 0;
@@ -39,18 +44,16 @@ export default {
       }
       if (now == "Archive") {
         this.style.opacity = 1;
-        this.style.transform = 'rotate(0deg)';
+        this.style.transform = "rotate(0deg)";
         this.to = "/";
         return;
       }
-      if (now == "Page") {
-        this.style.transform = 'rotate(90deg)';
-        this.to = "/Archive";
-        return;
-      }
+      this.style.transform = "rotate(90deg)";
+      this.to = "/archive";
+      return;
     }
   },
-  props: ["inside"]
+  props: ["inside", "config"]
 };
 </script>
 

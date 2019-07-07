@@ -11,7 +11,7 @@
           .meta
             a.category(v-for="e in blog.labels", :style="{'background-color':'#'+e.color}") {{e.name}}
         .content(v-html="blog.body")
-        Comments(:config="config")
+        Comments(:config="config",:id="$route.params.id")
 </template>
 
 <script>
