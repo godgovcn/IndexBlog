@@ -276,6 +276,10 @@
   margin-right: 80px;
 }
 
+#comment-form:hover .extrax {
+  margin-right: 0px;
+}
+
 #comment-form .send-comment textarea {
   width              : 100%;
   resize             : none;
@@ -323,6 +327,10 @@
   transition         : all 0.25s;
 }
 
+#comment-form .send-comment .dissend {
+  background-color: #e0e0e0;
+}
+
 #comment-form:hover .send {
   animation          : roll-in 0.3s;
   animation-fill-mode: forwards !important;
@@ -339,10 +347,18 @@
   color           : #000;
 }
 
+#comment-form .send-comment .dissend:hover {
+  background-color: #dadada;
+}
+
 #comment-form .send-comment .send:active {
   background-color: #abe4ff;
   box-shadow      : 0px 0px 0px rgba(0, 0, 0, 0.1), inset 0px 0px 15px rgba(0, 0, 0, 0.1);
   color           : #000;
+}
+
+#comment-form .send-comment .dissend:active {
+  background-color: #cccccc;
 }
 
 #comment-form .send-comment .send:active .mdi {

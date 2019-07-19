@@ -23,48 +23,56 @@
           a.comment-reply
             span.mdi.mdi-reply
     center
-      p 评论施工中。。。如果想要评论，请到
-        a(:href="'https://github.com/'+config.author+'/'+config.reop+'/issues/'+this.$route.params.id") 这里
-        |评论
 </template>
 <script>
 export default {
   name: "Comments",
   data() {
     return {
-      t:true,
-      comments: false
+      t: true,
+      comments: false,
+      login: false
     };
   },
   created() {
-    var that = this;
-    var list = []
-    //评论
-    fetch(
-      "https://api.github.com/repos/" +
-        that.config.author +
-        "/" +
-        that.config.reop +
-        "/issues/" +
-        that.id +
-        "/comments"
-    )
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function(rawdata) {
-        rawdata.forEach(e => {
-          list.push({
-            name: e.user.login,
-            avatar: e.user.avatar_url,
-            url: e.user.html_url,
-            body: e.body
+    this.getComments();
+  },
+  methods: {
+    getComments: function() {
+      var that = this;
+      var list = [];
+      //评论
+      fetch(
+        "https://api.github.com/repos/" +
+          that.config.author +
+          "/" +
+          that.config.reop +
+          "/issues/" +
+          that.id +
+          "/comments"
+      )
+        .then(function(res) {
+          return res.json();
+        })
+        .then(function(rawdata) {
+          rawdata.forEach(e => {
+            list.push({
+              name: e.user.login,
+              avatar: e.user.avatar_url,
+              url: e.user.html_url,
+              body: e.body
+            });
           });
         });
-      });
       that.comments = list;
+    }
   },
-  props: ["config","id"]
+  watch: {
+    update: function() {
+      this.comments.push(this.update);
+    }
+  },
+  props: ["config", "id", "update"]
 };
 </script>
 <style>

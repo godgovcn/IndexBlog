@@ -61,7 +61,7 @@ export default {
   components: {
     Comments: Comments
   },
-  props: ["config"]
+  props: ["config","login"]
 };
 </script>
 
