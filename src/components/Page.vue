@@ -102,6 +102,7 @@ export default {
     logout: function() {
       this.$cookies.remove("IndexBlog_Login");
       window.location.href = this.config.url + "#" + this.$route.path;
+      location.reload();
     }
   },
   components: {
