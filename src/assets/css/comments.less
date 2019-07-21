@@ -469,3 +469,50 @@
     transform: translate(0)
   }
 }
+
+@media(max-width:991px) {
+  .right-in-animation {
+    animation-name: bottom-in;
+  }
+
+  #comment-form .extra {
+    flex-direction: column;
+  }
+
+  #comment-form .extra input {
+    margin: 5px 0 !important;
+  }
+
+  #comment-form .extra svg {
+    display: none;
+  }
+
+  #comments .avatar,
+  #comments .comment-reply {
+    transform: scale(0.8);
+  }
+
+  #comments .comment-element {
+    padding: 5px 20px !important;
+  }
+
+  #comments .comments-head {
+    padding: 8px 20px;
+  }
+
+  #comments>.comment-list>li {
+    padding: 0 10px;
+  }
+
+  #comments .comment-content {
+    margin: 5px 0 15px;
+  }
+
+  #comments>.comment-list>li>.comment-children>.comment-list>li>.comment-children>.comment-list>li {
+    padding: 0 !important;
+  }
+
+  #comment-form {
+    margin: 20px 20px 0;
+  }
+}
