@@ -9,7 +9,7 @@
 <script>
 import marked from "marked";
 import hljs from "highlight.js";
-
+import 'highlight.js/styles/zenburn.css'
 import Menu from "@/components/Menu";
 
 import Config from "@/config.js";
